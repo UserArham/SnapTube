@@ -1,0 +1,376 @@
+<html>
+<section class="vault" id="vault" aria-label="SnapTube" data-yt-theme="dark" hidden inert>
+    <header class="yt-masthead" id="vault-masthead">
+      <div class="yt-masthead__start">
+        <button class="yt-icon-btn yt-masthead__guide" id="vault-guide-btn" type="button" data-vault-action="guide" aria-label="Menu" aria-controls="vault-guide" aria-expanded="false" title="Menu">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+        <button class="yt-logo" type="button" data-vault-action="home" aria-label="SnapTube Home" title="SnapTube Home">
+          <svg class="yt-logo__mark" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.3 6.4v7.2a.6.6 0 0 0 .9.52l6.15-3.6a.6.6 0 0 0 0-1.04L12.2 5.88a.6.6 0 0 0-.9.52z" fill="#fff"/></svg>
+          <span class="yt-logo__text">SnapTube</span>
+        </button>
+      </div>
+
+      <div class="yt-masthead__center">
+        <button class="yt-icon-btn yt-masthead__back" type="button" data-vault-action="search-close" aria-label="Back" title="Back">
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+        </button>
+        <form class="yt-search" id="vault-form" role="search" autocomplete="off" novalidate>
+          <div class="yt-search__box">
+            <svg class="icon yt-search__lead" aria-hidden="true"><use href="#i-search"/></svg>
+            <label class="visually-hidden" for="vault-input">YouTube link</label>
+            <input class="yt-search__input" id="vault-input" type="text" inputmode="url" placeholder="Paste or enter a YouTube link" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" enterkeyhint="go">
+            <button class="yt-search__clear" id="vault-input-clear" type="button" aria-label="Clear" title="Clear" hidden>
+              <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+            </button>
+          </div>
+          <button class="yt-search__submit" type="submit" aria-label="Play" title="Play">
+            <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+          </button>
+          <p class="yt-search__error" id="vault-msg" role="alert" hidden></p>
+        </form>
+        <button class="yt-icon-btn yt-icon-btn--tonal yt-masthead__paste" type="button" data-vault-action="paste" aria-label="Paste link from clipboard" title="Paste link from clipboard">
+          <svg class="icon" aria-hidden="true"><use href="#i-clipboard"/></svg>
+        </button>
+      </div>
+
+      <div class="yt-masthead__end">
+        <button class="yt-icon-btn yt-masthead__search" type="button" data-vault-action="search-open" aria-label="Paste a link" title="Paste a link">
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+        </button>
+        <button class="yt-icon-btn" id="vault-settings-btn" type="button" data-vault-action="settings" aria-label="Settings" aria-controls="vault-settings" aria-expanded="false" title="Settings">
+          <svg class="icon" aria-hidden="true"><use href="#i-more"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="yt-rail" aria-label="Shortcuts">
+      <button class="yt-rail__item" type="button" data-vault-action="home" data-nav="home">
+        <svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span>
+      </button>
+      <button class="yt-rail__item" type="button" data-vault-action="library" data-nav="library">
+        <svg class="icon" aria-hidden="true"><use href="#i-library"/></svg><span>You</span>
+      </button>
+      <button class="yt-rail__item" type="button" data-vault-action="paste">
+        <svg class="icon" aria-hidden="true"><use href="#i-clipboard"/></svg><span>Paste</span>
+      </button>
+      <button class="yt-rail__item" type="button" data-vault-action="private" aria-pressed="true">
+        <svg class="icon" aria-hidden="true"><use href="#i-incognito"/></svg><span>Private</span>
+      </button>
+    </nav>
+
+    <main class="yt-page" id="vault-page">
+      <!-- Home: your watch history, laid out like YouTube's home feed -->
+      <div class="yt-view yt-home" id="vault-home">
+        <div class="yt-chips" id="vault-chips" role="group" aria-label="Filter watch history" hidden>
+          <button class="yt-chip" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="yt-chip" type="button" data-filter="videos" aria-pressed="false">Videos</button>
+          <button class="yt-chip" type="button" data-filter="shorts" aria-pressed="false">Shorts</button>
+          <button class="yt-chip" type="button" data-filter="playlists" aria-pressed="false">Playlists</button>
+        </div>
+        <ul class="yt-feed" id="vault-feed" aria-label="Watch history" hidden></ul>
+        <p class="yt-feed-note" id="vault-feed-note" hidden></p>
+        <div class="yt-empty" id="vault-empty">
+          <div class="yt-empty__card">
+            <h1 class="yt-empty__title">Paste a link to get started</h1>
+            <p class="yt-empty__text">Copy a video link from YouTube and paste it into the bar above. Videos you watch will show up here.</p>
+            <button class="yt-btn yt-btn--primary" type="button" data-vault-action="paste">
+              <svg class="icon" aria-hidden="true"><use href="#i-clipboard"/></svg><span>Paste link</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- You: your playlists, recent history and backups -->
+      <div class="yt-view yt-library" id="vault-library" hidden>
+        <header class="yt-you">
+          <span class="yt-you__avatar" aria-hidden="true"><svg class="icon"><use href="#i-library"/></svg></span>
+          <div class="yt-you__text">
+            <h1 class="yt-you__title">You</h1>
+            <p class="yt-you__sub">Your playlists, likes and history are saved in this browser only.</p>
+          </div>
+        </header>
+
+        <section class="yt-shelf" aria-labelledby="vault-shelf-history">
+          <div class="yt-shelf__head">
+            <h2 class="yt-shelf__title" id="vault-shelf-history">History</h2>
+            <button class="yt-btn yt-btn--outline" type="button" data-vault-action="home">View all</button>
+          </div>
+          <ul class="yt-shelf__row" id="vault-lib-history"></ul>
+          <p class="yt-shelf__empty" id="vault-lib-history-empty" hidden>Videos you watch will show up here.</p>
+        </section>
+
+        <section class="yt-shelf" aria-labelledby="vault-shelf-playlists">
+          <div class="yt-shelf__head">
+            <h2 class="yt-shelf__title" id="vault-shelf-playlists">Playlists</h2>
+            <button class="yt-btn yt-btn--outline" type="button" data-vault-action="new-playlist">
+              <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span>New playlist</span>
+            </button>
+          </div>
+          <ul class="yt-shelf__grid" id="vault-lib-playlists"></ul>
+        </section>
+
+        <section class="yt-shelf yt-backup" aria-labelledby="vault-shelf-backup">
+          <h2 class="yt-shelf__title" id="vault-shelf-backup">Backup</h2>
+          <p class="yt-backup__text">Clearing this browser&rsquo;s data would erase your library. Export a backup to keep it safe, or to move it to another browser. This uses its own storage and doesn't save locally.</p>
+          <div class="yt-backup__actions">
+            <button class="yt-btn" type="button" data-vault-action="export">
+              <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span>Export</span>
+            </button>
+            <button class="yt-btn" type="button" data-vault-action="import">
+              <svg class="icon" aria-hidden="true"><use href="#i-upload"/></svg><span>Import</span>
+            </button>
+          </div>
+          <input class="visually-hidden" id="vault-import-file" type="file" accept=".json,application/json" tabindex="-1" aria-hidden="true">
+        </section>
+      </div>
+
+      <!-- One playlist: Watch later, Liked videos or one of yours -->
+      <div class="yt-view yt-plpage" id="vault-playlist" hidden>
+        <header class="yt-plhero">
+          <div class="yt-plhero__bg" id="vault-pl-bg" aria-hidden="true"></div>
+          <div class="yt-plhero__content">
+            <button class="yt-plhero__thumb" id="vault-pl-thumb" type="button" data-vault-action="play-all" aria-label="Play all"></button>
+            <div class="yt-plhero__info">
+              <h1 class="yt-plhero__title" id="vault-pl-title" dir="auto"></h1>
+              <p class="yt-plhero__meta" id="vault-pl-meta"></p>
+              <div class="yt-plhero__tools" id="vault-pl-tools">
+                <button class="yt-icon-btn yt-icon-btn--glass" type="button" data-vault-action="rename-playlist" aria-label="Rename playlist" title="Rename">
+                  <svg class="icon" aria-hidden="true"><use href="#i-pencil"/></svg>
+                </button>
+                <button class="yt-icon-btn yt-icon-btn--glass" type="button" data-vault-action="delete-playlist" aria-label="Delete playlist" title="Delete">
+                  <svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg>
+                </button>
+              </div>
+              <div class="yt-plhero__play">
+                <button class="yt-btn yt-btn--white" type="button" data-vault-action="play-all">
+                  <svg class="icon" aria-hidden="true"><use href="#i-play"/></svg><span>Play All</span>
+                </button>
+                <button class="yt-btn yt-btn--glass" type="button" data-vault-action="shuffle">
+                  <svg class="icon" aria-hidden="true"><use href="#i-shuffle"/></svg><span>Shuffle</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="yt-pllist">
+          <ol class="yt-plitems" id="vault-pl-items"></ol>
+          <div class="yt-plempty" id="vault-pl-empty" hidden>
+            <p class="yt-plempty__title">There is currently no videos in this playlist yet</p>
+            <p class="yt-plempty__text" id="vault-pl-empty-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Watch page -->
+      <div class="yt-watch" id="vault-watch" hidden>
+        <div class="yt-watch__primary">
+          <div class="yt-player" id="vault-stage"></div>
+          <h1 class="yt-watch__title" id="vault-title" dir="auto"></h1>
+          <div class="yt-owner">
+            <div class="yt-owner__channel">
+              <span class="yt-avatar yt-avatar--40" id="vault-avatar" aria-hidden="true"></span>
+              <div class="yt-owner__text">
+                <div class="yt-owner__name" id="vault-channel" dir="auto"></div>
+                <div class="yt-owner__sub" id="vault-channel-sub"></div>
+              </div>
+              <a class="yt-btn yt-btn--primary" id="vault-open" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Open in YouTube</a>
+            </div>
+            <div class="yt-actions">
+              <button class="yt-btn" id="vault-like" type="button" data-vault-action="like" aria-pressed="false" title="I like this">
+                <svg class="icon" aria-hidden="true"><use href="#i-like"/></svg><span>Like</span>
+              </button>
+              <button class="yt-btn" type="button" data-vault-action="share">
+                <svg class="icon" aria-hidden="true"><use href="#i-share"/></svg><span>Share</span>
+              </button>
+              <button class="yt-btn" id="vault-save-btn" type="button" data-vault-action="save" aria-haspopup="dialog" title="Save to playlist">
+                <svg class="icon" aria-hidden="true"><use href="#i-save"/></svg><span>Save</span>
+              </button>
+              <button class="yt-btn yt-btn--icon" id="vault-fs-btn" type="button" data-vault-action="fullscreen" aria-label="Fullscreen" title="Fullscreen (F)">
+                <svg class="icon" aria-hidden="true"><use href="#i-fullscreen"/></svg>
+              </button>
+              <button class="yt-btn yt-btn--icon" type="button" data-vault-action="stop" aria-label="Close video" title="Close video">
+                <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="yt-desc">
+            <p class="yt-desc__meta" id="vault-desc-meta"></p>
+            <p class="yt-desc__line"><a class="yt-desc__link" id="vault-desc-link" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"></a></p>
+            <p class="yt-desc__line" id="vault-desc-note"></p>
+          </div>
+        </div>
+        <aside class="yt-watch__secondary" aria-label="More videos">
+          <!-- Playing a saved playlist: what's next, like YouTube's playlist panel -->
+          <section class="yt-queue" id="vault-queue" aria-labelledby="vault-queue-title" hidden>
+            <header class="yt-queue__head">
+              <div class="yt-queue__heading">
+                <h2 class="yt-queue__title" id="vault-queue-title" dir="auto"></h2>
+                <p class="yt-queue__sub" id="vault-queue-sub"></p>
+              </div>
+              <button class="yt-icon-btn" id="vault-queue-next" type="button" data-vault-action="queue-next" aria-label="Next video" title="Next video">
+                <svg class="icon" aria-hidden="true"><use href="#i-next"/></svg>
+              </button>
+              <button class="yt-icon-btn" type="button" data-vault-action="queue-close" aria-label="Close playlist" title="Close playlist">
+                <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+              </button>
+            </header>
+            <ol class="yt-queue__items" id="vault-queue-items"></ol>
+          </section>
+          <h2 class="yt-watch__heading" id="vault-upnext-title">Recently watched</h2>
+          <ul class="yt-upnext" id="vault-upnext" aria-labelledby="vault-upnext-title"></ul>
+          <p class="yt-upnext__note" id="vault-upnext-note" hidden>Videos you watch will show up here.</p>
+        </aside>
+      </div>
+    </main>
+
+    <!-- When the browser won't do real full screen (say, inside a frame), the video fills the window -->
+    <div class="yt-fwbar" id="vault-fwbar" hidden>
+      <button class="yt-fwbar__exit" type="button" data-vault-action="fullscreen" title="Exit full screen (Esc)">
+        <svg class="icon" aria-hidden="true"><use href="#i-fullscreen-exit"/></svg><span>Exit full screen</span>
+      </button>
+      <span class="yt-fwbar__title" id="vault-fwbar-title" dir="auto"></span>
+    </div>
+
+    <!-- Settings (the ⋮ button). Clicking the backdrop closes it without clicking what's underneath. -->
+    <div class="yt-menu-backdrop" id="vault-settings-backdrop" data-vault-action="settings-close" hidden></div>
+    <div class="yt-menu" id="vault-settings" aria-label="Settings" hidden>
+      <div class="yt-menu__panel" id="vault-menu-main">
+        <button class="yt-menu__item" type="button" data-vault-action="private" aria-pressed="true">
+          <svg class="icon" aria-hidden="true"><use href="#i-incognito"/></svg>
+          <span class="yt-menu__label">Private mode: <span data-private-label>On</span></span>
+        </button>
+        <button class="yt-menu__item" type="button" data-vault-action="appearance-menu">
+          <svg class="icon" aria-hidden="true"><use href="#i-appearance"/></svg>
+          <span class="yt-menu__label">Appearance: <span data-appearance-label>Device theme</span></span>
+          <svg class="icon yt-menu__chevron" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+        </button>
+        <button class="yt-menu__item" type="button" data-vault-action="clear-history">
+          <svg class="icon" aria-hidden="true"><use href="#i-history"/></svg>
+          <span class="yt-menu__label">Clear watch history</span>
+        </button>
+        <hr class="yt-menu__divider yt-menu__keys">
+        <p class="yt-menu__hint yt-menu__keys"><kbd>Esc</kbd> Lock <span aria-hidden="true">&middot;</span> <kbd>/</kbd> Paste a link <span aria-hidden="true">&middot;</span> <kbd>F</kbd> Full screen</p>
+      </div>
+      <div class="yt-menu__panel" id="vault-menu-appearance" hidden>
+        <div class="yt-menu__head">
+          <button class="yt-icon-btn" type="button" data-vault-action="menu-back" aria-label="Back" title="Back">
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg>
+          </button>
+          <span>Appearance</span>
+        </div>
+        <p class="yt-menu__note">Setting applies to this browser only</p>
+        <button class="yt-menu__item" type="button" data-vault-action="appearance" data-appearance="device" aria-pressed="true">
+          <svg class="icon yt-menu__check" aria-hidden="true"><use href="#i-check"/></svg><span class="yt-menu__label">Use device theme</span>
+        </button>
+        <button class="yt-menu__item" type="button" data-vault-action="appearance" data-appearance="dark" aria-pressed="false">
+          <svg class="icon yt-menu__check" aria-hidden="true"><use href="#i-check"/></svg><span class="yt-menu__label">Dark theme</span>
+        </button>
+        <button class="yt-menu__item" type="button" data-vault-action="appearance" data-appearance="light" aria-pressed="false">
+          <svg class="icon yt-menu__check" aria-hidden="true"><use href="#i-check"/></svg><span class="yt-menu__label">Light theme</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- The ⋮ menu on a video (Save to Watch later, Save to playlist, Remove…) -->
+    <div class="yt-menu-backdrop" id="vault-popup-backdrop" data-vault-action="popup-close" hidden></div>
+    <div class="yt-menu yt-popup" id="vault-popup" aria-label="Video actions" hidden></div>
+
+    <!-- Dialogs -->
+    <div class="yt-dialog-scrim" id="vault-dialog-scrim" data-vault-action="dialog-close" hidden></div>
+    <div class="yt-dialog yt-save" id="vault-save" role="dialog" aria-modal="true" aria-labelledby="vault-save-title" hidden>
+      <div class="yt-dialog__head">
+        <h2 class="yt-dialog__title" id="vault-save-title">Save video to&hellip;</h2>
+        <button class="yt-icon-btn" type="button" data-vault-action="dialog-close" aria-label="Close" title="Close">
+          <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
+        </button>
+      </div>
+      <ul class="yt-save__list" id="vault-save-list"></ul>
+      <button class="yt-save__new" id="vault-save-new" type="button" data-vault-action="save-new">
+        <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span>Create new playlist</span>
+      </button>
+      <form class="yt-save__form" id="vault-save-form" autocomplete="off" novalidate hidden>
+        <label class="yt-field">
+          <span class="yt-field__label">Name</span>
+          <input class="yt-field__input" id="vault-save-name" type="text" maxlength="150" placeholder="Enter playlist name&hellip;" spellcheck="false" enterkeyhint="done">
+        </label>
+        <div class="yt-field__foot" id="vault-save-count">0/150</div>
+        <div class="yt-dialog__actions">
+          <button class="yt-btn yt-btn--text" id="vault-save-create" type="submit" disabled>Create</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="yt-dialog yt-namebox" id="vault-name" role="dialog" aria-modal="true" aria-labelledby="vault-name-title" hidden>
+      <form id="vault-name-form" autocomplete="off" novalidate>
+        <h2 class="yt-namebox__title" id="vault-name-title">New playlist</h2>
+        <label class="yt-field">
+          <span class="yt-field__label">Title</span>
+          <input class="yt-field__input" id="vault-name-input" type="text" maxlength="150" placeholder="Choose a title" spellcheck="false" enterkeyhint="done">
+        </label>
+        <div class="yt-field__foot" id="vault-name-count">0/150</div>
+        <div class="yt-dialog__actions">
+          <button class="yt-btn yt-btn--text" type="button" data-vault-action="dialog-close">Cancel</button>
+          <button class="yt-btn yt-btn--text" id="vault-name-ok" type="submit" disabled>Create</button>
+        </div>
+      </form>
+    </div>
+    <!-- Side menu (the ☰ button) -->
+    <div class="yt-scrim" data-vault-action="guide-close"></div>
+    <nav class="yt-guide" id="vault-guide" aria-label="Main menu" inert>
+      <div class="yt-guide__head">
+        <button class="yt-icon-btn" type="button" data-vault-action="guide" aria-label="Close menu" title="Close menu">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+        <button class="yt-logo" type="button" data-vault-action="home" aria-label="UnblockedTube Home" title="UnblockedTube Home">
+          <svg class="yt-logo__mark" viewBox="0 0 28 20" aria-hidden="true"><rect width="28" height="20" rx="6" fill="#ff0033"/><path d="M11.3 6.4v7.2a.6.6 0 0 0 .9.52l6.15-3.6a.6.6 0 0 0 0-1.04L12.2 5.88a.6.6 0 0 0-.9.52z" fill="#fff"/></svg>
+          <span class="yt-logo__text">UnblockedTube</span>
+        </button>
+      </div>
+      <div class="yt-guide__section">
+        <button class="yt-guide__item" type="button" data-vault-action="home" data-nav="home">
+          <svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span>
+        </button>
+        <button class="yt-guide__item" type="button" data-vault-action="paste">
+          <svg class="icon" aria-hidden="true"><use href="#i-clipboard"/></svg><span>Paste link</span>
+        </button>
+      </div>
+      <div class="yt-guide__section">
+        <button class="yt-guide__item yt-guide__item--heading" type="button" data-vault-action="library" data-nav="library">
+          <span>You</span><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg>
+        </button>
+        <button class="yt-guide__item" type="button" data-vault-action="playlist" data-playlist="WL" data-nav="WL">
+          <svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span class="yt-guide__label">Watch later</span><span class="yt-guide__aside" data-count="WL"></span>
+        </button>
+        <button class="yt-guide__item" type="button" data-vault-action="playlist" data-playlist="LL" data-nav="LL">
+          <svg class="icon" aria-hidden="true"><use href="#i-like"/></svg><span class="yt-guide__label">Liked videos</span><span class="yt-guide__aside" data-count="LL"></span>
+        </button>
+        <div class="yt-guide__playlists" id="vault-guide-playlists"></div>
+      </div>
+      <div class="yt-guide__section">
+        <h2 class="yt-guide__title">Settings</h2>
+        <button class="yt-guide__item" type="button" data-vault-action="private" aria-pressed="true">
+          <svg class="icon" aria-hidden="true"><use href="#i-incognito"/></svg><span>Private mode</span><span class="yt-guide__aside" data-private-label>On</span>
+        </button>
+        <button class="yt-guide__item" type="button" data-vault-action="clear-history">
+          <svg class="icon" aria-hidden="true"><use href="#i-history"/></svg><span>Clear watch history</span>
+        </button>
+        <button class="yt-guide__item" type="button" data-vault-action="lock">
+          <svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><span>Lock</span><kbd class="yt-guide__aside">Esc</kbd>
+        </button>
+      </div>
+      <p class="yt-guide__footer">UnblockedTube plays videos with YouTube&rsquo;s embedded player.</p>
+    </nav>
+
+    <div class="yt-snackbar" id="vault-toast">
+      <span class="yt-snackbar__text" id="vault-toast-text" role="status" aria-live="polite"></span>
+      <button class="yt-snackbar__action" id="vault-toast-action" type="button" hidden></button>
+    </div>
+  </section>
+
+  <script src="js/calculator.js?v=6"></script>
+  <script src="js/youtube.js?v=6"></script>
+  <script src="js/library.js?v=6"></script>
+  <script src="js/app.js?v=6"></script>
+</body>
+</html>
