@@ -1,0 +1,13 @@
+{
+  "name": "SnapTube",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SnapTube, fuck admins!",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "test": "node --test tests/calculator.test.js tests/youtube.test.js tests/library.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
